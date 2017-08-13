@@ -1,17 +1,17 @@
 const countrySample = {
     "123456": {
-        countryId: "123456",
-        countryName: "Mexico",
+        countryName: "Colombia",
+        countryCapital:"Bogota",
+        countryCallingCodes:["57"],
         countryLang: "Spanish",
-        countryCurrency: "Peso",
-        countryWarnings: "Don't drink the local tap water"
-    },
-    "789101": {
-        countryName: "United Kingdom",
-        countryLang: "English",
-        countryCurrency: "Pound",
-        countryWarnings: "Don't drink the local whiskey"
-
+        countryCurrency: [{
+            code:"COP",
+            name:"Colombian Peso",
+            symbol: "$"
+        }],
+        countryWarnings: true,
+        flag:"https://restcountries.eu/data/col.svg"
+        
     }
 };
 

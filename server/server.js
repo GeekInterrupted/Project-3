@@ -8,9 +8,12 @@ mongoose.connect("mongodb://localhost/localdb");
 
 const countrySchema = {
     countryName:String,
+    countryCapital:String,
+    countryCallingCodes:[String],
     countryLang:String,
-    countryCurrency:String,
-    countryWarnings:String
+    countryCurrency:[Schema.Types.Mixed],
+    countryWarnings:boolean,
+    countryFlag:String
 };
 
 const Country = mongoose.model("Country", countrySchema, "countries");
