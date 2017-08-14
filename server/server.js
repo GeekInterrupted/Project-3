@@ -4,6 +4,10 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
+// Our scraping tools
+const request = require("request");
+const cheerio = require("cheerio");
+
 mongoose.connect("mongodb://localhost/localdb");
 
 const countrySchema = {
@@ -40,3 +44,7 @@ app.get("/", (req, res) => {
 app.get("/", (req, res) => res.send("Initial view of application"));
 app.server.listen(process.env.PORT || 3000);
 console.log(`Server is listening to you on port ${app.server.address().port}`);
+
+app.post("/embassy", (req,res)=>{
+
+})

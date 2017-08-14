@@ -4,7 +4,7 @@
     "description": "UT Houston Coding Bootcamp Final Project",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack-dev-server"
+        "dev": "webpack-dev-server --hot"
     },
     "repository": {
         "type": "git",
@@ -27,13 +27,16 @@
         "webpack-dev-server": "^2.7.1"
     },
     "dependencies": {
+        "axios": "^0.16.2",
         "body-parser": "^1.17.2",
+        "cheerio": "^1.0.0-rc.2",
         "cors": "^2.8.4",
         "express": "^4.15.4",
         "mongoose": "^4.11.6",
         "react": "^15.6.1",
         "react-dom": "^15.6.1",
         "react-redux": "^5.0.6",
-        "redux": "^3.7.2"
+        "redux": "^3.7.2",
+        "request": "^2.81.0"
     }
 }
