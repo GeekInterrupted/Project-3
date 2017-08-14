@@ -4,7 +4,8 @@ const country = (state = {}, action) => {
         case "RETURN_ALL_COUNTRIES":
         return Object.assign({}, state);
         case "COUNTRIES_LIST_ADD":
-        return Object.assign({}, action.payload.response);
+        let countriesList = action.payload.response;
+        return Object.assign({}, countriesList);
         default:
         return state;
     }

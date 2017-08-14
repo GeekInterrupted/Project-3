@@ -2,32 +2,28 @@ import http from "http";
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
-
-mongoose.connect("mongodb://localhost/localdb");
-
-const countrySchema = {
-    countryName:String,
-    countryCapital:String,
-    countryCallingCodes:[String],
-    countryLang:String,
-    countryCurrency:[Schema.Types.Mixed],
-    countryWarnings:boolean,
-    countryFlag:String
-};
-
-const Country = mongoose.model("Country", countrySchema, "countries");
+import falcor from "falcor";
+import falcorRouter from "falcor-router";
+import falcorExpress from "falcor-express";
+import routes from "./routes.js";
 
 const app = express();
+
 app.server = http.createServer(app);
 
 //CORS - 3rd party middleware
 app.use(cors());
 
+//Manage Falcor at the backend
 app.use(bodyParser.json({extended: false}));
-app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/static', express.static('dist'));
+// app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/model.json', falcorExpress.dataSourceRoute((req, res) => {
+    return new falcorRouter(routes);
+}));
+
+app.use(express.static("dist"));
 
 app.get("/", (req, res) => {
     Country.find((err, countryDocs) => {
@@ -40,6 +36,7 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/", (req, res) => res.send("Initial view of application"));
 app.server.listen(process.env.PORT || 3000);
 console.log(`Server is listening to you on port ${app.server.address().port}`);
+
+export default app;

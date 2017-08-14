@@ -12,7 +12,7 @@ import falcorModel from "../falcorModel.js";
 const mapStateToProps = (state) => ({
     ...state
 });
-
+//bind the countries' actions to this.props component
 const mapDispatchToProps = (dispatch) => ({
     countryActions: bindActionCreators(countryActions, dispatch)
 });
@@ -50,7 +50,7 @@ async _fetch() {
 
         for (let countryKey in this.props) {
             const countryDetails = this.props[countryKey];
-            console.log(countryDetails);
+            console.log("Country Details from TravelDiary: ",countryDetails);
             const currentCountry = (
                 <div key = {countryKey}>
                 <h2>Country Name: {countryDetails.countryName}</h2>
