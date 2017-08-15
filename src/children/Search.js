@@ -17,7 +17,7 @@ class Search extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    // set this component state to whateber users type in real time
+    // set this component state to whatever users type in real time
     handleChange(event){
         // grab the input value
         this.setState({country : event.target.value})
