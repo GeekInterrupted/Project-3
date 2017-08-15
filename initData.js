@@ -1,16 +1,29 @@
 [
-    {
-        countryId: "123456",
-        countryName: "Mexico",
-        countryLang: "Spanish",
-        countryCurrency: "Peso",
-        countryWarnings: "Don't drink the local tap water"
+ {
+    countryName: "Colombia",
+    countryCapital:"Bogota",
+    countryCallingCodes:["57"],
+    countryLang: "Spanish",
+    countryCurrency: [{
+        code:"COP",
+        name:"Colombian Peso",
+        symbol: "$"
+    }],
+    countryWarnings: true,
+    flag:"https://restcountries.eu/data/col.svg"    
     },
-     {
-        countryId: "789101",
-        countryName: "United Kingdom",
-        countryLang: "English",
-        countryCurrency: "Pound",
-        countryWarnings: "Don't drink the local whiskey"
+    {
+    countryName: "Andorra",
+    countryCapital:"La Vieja",
+    countryCallingCodes:["55"],
+    countryLang: "Who knows",
+    countryCurrency: [{
+        code:"ADP",
+        name:"Andorran Stuff",
+        symbol: "$"
+    }],
+    countryWarnings: false,
+    flag:"https://restcountries.eu/data/col.svg"    
     }
 ]
+
