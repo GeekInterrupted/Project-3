@@ -1,15 +1,10 @@
-import mongoose from "mongoose";
-
-mongoose.connect("mongodb://localhost/localdb");
-
-const countrySchema = {
-    countryName:String,
-    countryLang:String
-};
-
-const Country = mongoose.model("Country", countrySchema, "countries");
+import configMongoose from "./configMongoose";
+import sessionRoutes from "./routesSession";
+const Country = configMongoose.Country;
 
 const TravelDiaryRoutes = [
+    //spreading sessionRoutes will make the login route available accross Falcor routes
+    ...sessionRoutes,
     {
     route: "countries.length",
     get: () => Country.count({}, (err, count) => count)

@@ -4,7 +4,7 @@
     "description": "UT Houston Coding Bootcamp Final Project",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack-dev-server",
+        "dev": "webpack-dev-server --hot",
         "start": "npm run webpack; node server",
         "webpack": "webpack --config ./webpack.config.js"
     },
