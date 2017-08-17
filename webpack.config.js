@@ -12,15 +12,25 @@ module.exports = {
     port: 3000,
     contentBase: './dist'
   },
+
+   // To be able resolve .jsx extension
+   resolve: {
+    extensions: ['.js', '.jsx']
+  },
+
   module: {
     loaders: [
     {
-      test: /\.js$/,
+      include: /src/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
       query: {
       presets: ['es2015', 'stage-0', 'react']
       }
     }]
-  }
+  },
+ 
+  
+  devtool: "eval-source-map"
+  
 }

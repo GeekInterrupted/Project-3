@@ -6707,6 +6707,29 @@ module.exports = { debugTool: debugTool };
       return function(x, i, o) { return self.predicate(x, i, o) && predicate.call(this, x, i, o); }
     }
 
+<<<<<<< HEAD
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+=======
     FilterObservable.prototype.internalFilter = function(predicate, thisArg) {
       return new FilterObservable(this.source, innerPredicate(predicate, this), thisArg);
     };
@@ -6765,6 +6788,7 @@ module.exports = { debugTool: debugTool };
    */
   observableProto.transduce = function(transducer) {
     var source = this;
+>>>>>>> master
 
     function transformForObserver(o) {
       return {
@@ -61200,6 +61224,30 @@ module.exports = function setValueSync(pathArg, valueArg, errorSelectorArg, comp
         errorSelector = this._root._errorSelector;
     }
 
+<<<<<<< HEAD
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+=======
     if (typeof comparator !== "function") {
         comparator = this._root._comparator;
     }
@@ -61209,6 +61257,7 @@ module.exports = function setValueSync(pathArg, valueArg, errorSelectorArg, comp
         return this._getValueSync(this, value.path).value;
     }
 };
+>>>>>>> master
 
 
 /***/ }),
