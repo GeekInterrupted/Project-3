@@ -10,6 +10,9 @@ import createHashHistory from "history/lib/createHashHistory";
 
 
 class Root extends Component {
+    constructor(props){
+        super(props)
+    }
     static propTypes = {
         history: PropTypes.object.isRequired,
         store: PropTypes.object.isRequired
@@ -18,9 +21,9 @@ class Root extends Component {
         return (
             <Provider store = {this.props.store}>
             <div>
-            <Router history = {this.props.history}>
+            {/* <Router history = {this.props.history}> */}
             {routes}
-            </Router>
+            {/* </Router> */}
             </div>
             </Provider>
         )
