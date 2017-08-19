@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import Formsy from 'formsy-react';
-import { RaisedButton, Paper } from 'material-ui';
-import DefaultInput from './DefaultInput';
+import React, { Component } from "react";
+import Formsy from "formsy-react";
+import { RaisedButton, Paper } from "material-ui";
+import DefaultInput from "./DefaultInput";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import RaisedButton from 'material-ui/RaisedButton';
-// import Paper from "material-ui/Paper;"
 
 class LoginForm extends Component {
   constructor() {
@@ -14,6 +12,7 @@ class LoginForm extends Component {
   render() {
       return (
         <Formsy.Form onSubmit={this.props.onSubmit}>
+        <MuiThemeProvider>
         <Paper zDepth={1} style={{padding: 32}}>
           <h3>Log in</h3>
           <DefaultInput onChange={(event) => {}} name='username' title='Username (admin)'
@@ -28,6 +27,7 @@ class LoginForm extends Component {
             label={'Log in'} />
           </div>
         </Paper>
+        </MuiThemeProvider>
       </Formsy.Form>
     );
   }
