@@ -19,7 +19,7 @@ syncReduxAndRouter(history, store);
 const node = (
     <Root
     history={history}
-    store={store}
+    store={store}  
     />   
 );
 

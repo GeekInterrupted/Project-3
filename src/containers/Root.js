@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import {Provider} from "react-redux";
 import routes from "../routes";
 import createHashHistory from "history/lib/createHashHistory";
-// import { createHashHistory, BrowserRouter, HashRouter, MemoryRouter, StaticRouter } from 'history'
-
 
 
 class Root extends Component {
