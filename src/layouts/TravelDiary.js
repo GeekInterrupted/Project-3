@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
-import countryActions from "../actions/country.js";
+import entryActions from "../actions/entry.js";
 import falcorModel from "../falcorModel.js";
-
-//line 30 needs to be fixed = not parsing the object properly 
-//<h3>Calling Codes: {countryDetails.countryCallingCodes}</h3>
-
 
 //use the spread operator to spread one object state into a second one
 const mapStateToProps = (state) => ({
@@ -14,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 //bind the countries' actions to this.props component
 const mapDispatchToProps = (dispatch) => ({
-    countryActions: bindActionCreators(countryActions, dispatch)
+    entryActions: bindActionCreators(entryActions, dispatch)
 });
 
 class TravelDiary extends Component {
@@ -25,49 +21,46 @@ class TravelDiary extends Component {
      //_fetch is the asynchronous function that will let us use the await keyword
      //using async await instead of promises will avoid callback hell situations
 componentWillMount () {
+    if(typeof window !== "undefined") {
     this._fetch();
+    }
 }
 
 async _fetch() {
-    const countriesLength = await falcorModel.
-    getValue("countries.length").
+    const entriesLength = await falcorModel.
+    getValue("entries.length").
     then((length) => length);
-
-    const countries = await falcorModel.
-    get(["countries", {from: 0, to: countriesLength-1},
-    ["id", "countryName", "countryLang", "countryCapital", "countryCallingCodes"]])
-    .then((countriesResponse) => countriesResponse.json.countries);
-
-//we will be able to dispatch an action from props since the countries object 
-//is fetched from Falcor and is now available in the reducer
-    this.props.countryActions.countriesList(countries);
     
+
+    const entries = await falcorModel.
+    get(["entries", {from: 0, to: entriesLength-1},
+    ["entryTitle", "entryContent"]])
+    .then((entriesResponse) => entriesResponse.json.entries);
+
+//we will be able to dispatch an action from props since the entries object 
+//is fetched from Falcor and is now available in the reducer
+    this.props.entryActions.entriesList(entries);
 }
 
-
     render() {
-        let countryArray = [];
+        let entryArray = [];
 
-        for (let countryKey in this.props) {
-            const countryDetails = this.props[countryKey];
-            console.log("Country Details from TravelDiary: ",countryDetails);
-            const currentCountry = (
-                <div key = {countryKey}>
-                <h2>Country Name: {countryDetails.countryName}</h2>
-                <h3>Capital: {countryDetails.countryCapital}</h3>
-                <h3>Calling Codes: {countryDetails.countryCallingCodes}</h3>
-
-                <h3>Currency: {countryDetails.countryCurrency}</h3>
-
-                <h3>Language: {countryDetails.countryLang}</h3>
-                
+        for (let entryKey in this.props.entry) {
+            //reducer is available via the routes/index.js
+            const entryDetails = this.props.entry[entryKey];
+        
+            const currentEntry = (
+                <div key = {entryKey}>
+                <h2>Entry Title: {entryDetails.entryTitle}</h2>
+                <h3>Entry Content: {entryDetails.entryContent}</h3>              
                 </div>);
-                countryArray.push(currentCountry);
+                entryArray.push(currentEntry);
             }
             return (
                 <div>
-                <h1>Countries of the world</h1>
-                {countryArray}
+                
+                <h1>Travel Diary Entries</h1>
+                {entryArray}
                 </div>
             );
     }

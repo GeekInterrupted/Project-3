@@ -1,29 +1,13 @@
 [
  {
-    countryName: "Colombia",
-    countryCapital:"Bogota",
-    countryCallingCodes:["57"],
-    countryLang: "Spanish",
-    countryCurrency: [{
-        code:"COP",
-        name:"Colombian Peso",
-        symbol: "$"
-    }],
-    countryWarnings: true,
-    flag:"https://restcountries.eu/data/col.svg"    
+    entryId: "123456", 
+    entryTitle: "Travel Plan #1",
+    entryContent: "Pack stuff and go"    
     },
     {
-    countryName: "Andorra",
-    countryCapital:"La Vieja",
-    countryCallingCodes:["55"],
-    countryLang: "Who knows",
-    countryCurrency: [{
-        code:"ADP",
-        name:"Andorran Stuff",
-        symbol: "$"
-    }],
-    countryWarnings: false,
-    flag:"https://restcountries.eu/data/col.svg"    
+    entryId: "412355",
+    entryTitle: "Travel Plan #2",
+    entryContent: "Content for entry #2"  
     }
 ]
 

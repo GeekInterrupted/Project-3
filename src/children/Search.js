@@ -30,7 +30,7 @@ class Search extends Component {
     // when users click
     handleClick(event){
         event.preventDefault();
-        console.log(`This is the Seach's state ${this.state.country}`);
+        console.log(`This is the Search's state ${this.state.country}`);
         
         // make HTTP requests from helpers
         Helpers.getCurrencyRate(this.state.country);

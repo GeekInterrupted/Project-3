@@ -1,40 +1,42 @@
 import configMongoose from "./configMongoose";
 import sessionRoutes from "./routesSession";
-const Country = configMongoose.Country;
+const Entry = configMongoose.Entry;
 
 const TravelDiaryRoutes = [
     //spreading sessionRoutes will make the login route available accross Falcor routes
     ...sessionRoutes,
     {
-    route: "countries.length",
-    get: () => Country.count({}, (err, count) => count)
-    .then ((countriesCountInDB) => {
+    route: "entries.length",
+    //return a Mongoose promise with get
+    //Entry.count retrieves the number of entries in the Entry model
+    get: () => Entry.count({}, (err, count) => count)
+    .then ((entriesCountInDB) => {
         return {
-            path: ["countries", "length"],
-            value: countriesCountInDB
+            path: ["entries", "length"],
+            value: entriesCountInDB
         };
     })
 },
 {
-    route: 'countries[{integers}]["id", "countryName", "countryLang"]',
+    route: 'entries[{integers}]["entryTitle", "entryContent"]',
     get: (pathSet) => {
-        const countriesIndex = pathSet[1];
+        const entriesIndex = pathSet[1];
 
-        return Country.find({}, (err, countryDocs) => countryDocs)
-        .then ((countriesArrayFromDB) => {
+        return Entry.find({}, (err, entryDocs) => entryDocs)
+        .then ((entriesArrayFromDB) => {
             let results = [];
 
-            countriesIndex.forEach((index) => {
-                const singleCountryObject = countriesArrayFromDB[index].toObject();
-                const falcorSingleCountryResult = {
-                    path: ["countries", index],
-                    value: singleCountryObject
+            entriesIndex.forEach((index) => {
+                const singleEntryObject = entriesArrayFromDB[index].toObject();
+                const falcorSingleEntryResult = {
+                    path: ["entries", index],
+                    value: singleEntryObject
                 };
                 
-                results.push(falcorSingleCountryResult);
+                results.push(falcorSingleEntryResult);
 
             });
-            console.log("single country results: ",results);
+            console.log("single entry results: ",results);
             return results;
             });   
         }

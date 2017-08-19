@@ -2,7 +2,6 @@ import http from "http";
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
 import falcor from "falcor";
 import falcorRouter from "falcor-router";
 import falcorExpress from "falcor-express";
@@ -32,13 +31,13 @@ app.use('/model.json', falcorExpress.dataSourceRoute((req, res) => {
 app.use(express.static("dist"));
 
 app.get("/", (req, res) => {
-    Country.find((err, countryDocs) => {
-        const theCountries = countryDocs.map((countryItem) => {
-        return `<h2>${countryItem.countryName}</h2>
-            ${countryItem.countryLang}`;
+    Entry.find((err, entryDocs) => {
+        const theEntries = entryDocs.map((entryItem) => {
+        return `<h2>${entryItem.entryTitle}</h2>
+            ${entryItem.entryContent}`;
         }).join("<br >");
         res.send(`<h1>Initial view of application</h1>
-        ${theCountries}`);
+        ${theEntries}`);
     });
 });
 
@@ -87,11 +86,11 @@ app.post("/embassy", (req,res)=>{
             $(".warning_alerts_content").children("ul").each(function(i, element){
                 // select the second section
                 if (i == 1){
-                    // Iterate it's children
+                    // Iterate its children
                     $(this).children("li").each(function(i, element){        
                         // We grab the first one as a warning
                         if(i == 0){
-                            // Granb it's text
+                            // Grab its text
                             const warning = {
                                 warning: $(this).find("a").text().trim(),
                                 link: `https://travel.state.gov`+ $(this).find("a").attr("href"),
@@ -103,13 +102,13 @@ app.post("/embassy", (req,res)=>{
                             }
                             // We grab the second one as an alert
                         } else {
-                            // Granb it's text
+                            // Grab its text
                             const alert = {
                                 alert: $(this).find("a").text().trim(),
                                 link: `https://travel.state.gov`+ $(this).find("a").attr("href"),
                                 date: $(this).find("span").text().trim()
                             }
-                            // If there is a alert
+                            // If there is an alert
                             if(alert.alert !== undefined){
                                 result.push(alert);
                             }
@@ -118,6 +117,7 @@ app.post("/embassy", (req,res)=>{
                 }
             })
         // send back to the client side
+        console.log("this is the result: ", result);
         res.json(result);
     });
 })

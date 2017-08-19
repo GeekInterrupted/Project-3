@@ -9,12 +9,12 @@ const conf = {
 mongoose.connect(`mongodb://${conf.hostname}:
 ${conf.port}/${conf.env}`);
 
-const countrySchema = {
-    countryName:String,
-    countryLang:String,
+const entrySchema = {
+    entryTitle:String,
+    entryContent:String,
 };
 
-const Country = mongoose.model("Country", countrySchema, "countries");
+const Entry = mongoose.model("Entry", entrySchema, "entries");
 
 const userSchema = {
     username:String,
@@ -29,6 +29,6 @@ const userSchema = {
 const User = mongoose.model("User", userSchema, "users");
 
 export default {
-    Country,
+    Entry,
     User
 };

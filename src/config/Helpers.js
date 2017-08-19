@@ -2,11 +2,21 @@
 import axios from "axios";
 
 const Helpers = {
+
+    getEmbassyAndWaring: countryTerm=>{
+        
+    // making a post request to server to handle gettinh embasy info and warning
+      return axios.post("/embassy", {country:countryTerm}).then(data=>{
+        //  send data that we get from server to Search component
+        return(data.data);
+      })
+    },
+
     getCurrencyRate: countryTerm=>{
          // assigne URL variable for making http request with axios
          let restURL = `https://restcountries.eu/rest/v2/name/${countryTerm}`;
          axios.get(restURL).then(res=>{
-             console.log(`This is a resonse from rest country`);
+             console.log(`This is a response from rest country`);
              console.log(res.data);
  
              // Then  Grab the currency and assign to variable
@@ -28,16 +38,8 @@ const Helpers = {
                  })
          })
  
-    },
-
-    getEmbassyAndWaring: countryTerm=>{
-        
-    // making a post request to server to handle gettinh embasy info and warning
-      return axios.post("/embassy", {country:countryTerm}).then(data=>{
-        //  send data that we get from server to Search component
-        return(data.data);
-      })
     }
+
 }
 
 export default Helpers;
