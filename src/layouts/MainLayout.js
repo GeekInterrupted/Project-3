@@ -1,13 +1,16 @@
 //this is the main wrapper for the whole application
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-class MainLayout extends React.Component {
-    static propTypes = {
-        children: PropTypes.element
+class MainLayout extends Component {
+    constructor(props){
+        super(props)
     }
-    render () {
+    // static propTypes = {
+    //     children: PropTypes.element
+    // }
+    render() {
         return (
             <div>
             <span>
