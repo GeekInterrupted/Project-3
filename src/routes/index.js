@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { Route, IndexRoute } from "react-router";
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import TravelDiary from "../layouts/TravelDiary";
 import LoginView from "../views/LoginView";
 import SearchView from "../views/SearchView";
 
 
+const routes =  (
+    <BrowserRouter> 
+        <MainLayout>
+        
+        <Route exact path ="/" component = { TravelDiary }  />
 
-export default (
-    <Route component= {MainLayout} path ="/">
-    
-    <IndexRoute component = { TravelDiary } name = "home" />
+        <Route exact path = "/login" component = { LoginView } />
 
-    <Route component = { LoginView } path = "login" name = "login" />
-   
-    <Route component = { SearchView } path = "/" name = "search" />
-   
-    </Route>
+        </MainLayout>
+    </BrowserRouter> 
 )
 
+export default routes;
 

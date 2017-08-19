@@ -5,7 +5,7 @@ import Falcor from "falcor";
 import falcorModel from "../falcorModel.js";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {LoginForm} from "../components/LoginForm.js";
+import LoginForm from "../components/LoginForm.js";
 import {Snackbar} from "material-ui";
 
 const mapStateToProps = (state) => ({
@@ -65,15 +65,9 @@ async login(credentials) {
     render() {
         return (
             <div>
-            <div style={{maxWidth: 450, margin: '0 auto'}}>
-              <LoginForm
-                onSubmit={this.login} />
-            </div>
-            <Snackbar
-              autoHideDuration={4000}
-              open={!!this.state.error}
-              message={this.state.error || ""}
-              onRequestClose={() => console.info('you can add custom action here')} />
+            <LoginForm />
+           
+         
           </div>
         );
     }

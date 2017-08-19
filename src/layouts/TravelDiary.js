@@ -37,10 +37,10 @@ async _fetch() {
     ["entryTitle", "entryContent"]])
     .then((entriesResponse) => entriesResponse.json.entries);
 
-//we will be able to dispatch an action from props since the entries object 
-//is fetched from Falcor and is now available in the reducer
-    this.props.entryActions.entriesList(entries);
-}
+    //we will be able to dispatch an action from props since the entries object 
+    //is fetched from Falcor and is now available in the reducer
+        this.props.entryActions.entriesList(entries);
+    }
 
     render() {
         let entryArray = [];
