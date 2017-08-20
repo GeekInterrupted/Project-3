@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Logo from "../components/Logo.js";
 
 class MainLayout extends Component {
     constructor(props){
@@ -13,6 +14,8 @@ class MainLayout extends Component {
     render() {
         return (
             <div>
+           <Logo />
+          
             <span>
             Links: <Link to = "/login">Login </Link>
             </span>
