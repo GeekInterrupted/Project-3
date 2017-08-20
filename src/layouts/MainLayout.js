@@ -14,8 +14,9 @@ class MainLayout extends Component {
         return (
             <div>
             <span>
-            Links: <Link to = "/login">Login</Link>
+            Links: <Link to = "/login">Login </Link>
             </span>
+            || <Link to = "/edit-entry"> Edit Entry</Link>
             <br />
             {/*content of current route will go in the props.children below */}
             {this.props.children}

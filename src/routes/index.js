@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import TravelDiary from "../layouts/TravelDiary";
 import LoginView from "../views/LoginView";
 import SearchView from "../views/SearchView";
+import DashboardView from "../views/DashboardView";
 
 
 const routes =  (
@@ -13,6 +14,8 @@ const routes =  (
         <Route exact path ="/" component = { TravelDiary }  />
 
         <Route exact path = "/login" component = { LoginView } />
+
+        <Route exact path = "/edit-entry" component = { DashboardView } />
 
         </MainLayout>
     </BrowserRouter> 

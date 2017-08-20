@@ -1,4 +1,6 @@
 //returns a new entriesList object using Object.assign
+import mapHelpers from "../utils/mapHelpers";
+
 const entry = (state = {}, action) => {
     switch (action.type) {
         case "RETURN_ALL_ENTRIES":
@@ -6,7 +8,8 @@ const entry = (state = {}, action) => {
         case "ENTRIES_LIST_ADD":
         let entriesList = action.payload.response;
         return Object.assign({}, entriesList);
-        default:
+      
+      default:
         return state;
     }
 }
