@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
 import entryActions from "../actions/entry.js";
 import falcorModel from "../falcorModel.js";
+import Logo from "../components/Logo";
 
 //use the spread operator to spread one object state into a second one
 const mapStateToProps = (state) => ({
@@ -58,7 +59,11 @@ async _fetch() {
             }
             return (
                 <div>
-                
+                <br />
+                <br />
+                <Logo />
+                <br />
+                <br />                
                 <h1>Travel Diary Entries</h1>
                 {entryArray}
                 </div>

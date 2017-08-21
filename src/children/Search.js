@@ -1,5 +1,7 @@
 // Import react component from react
 import React, { Component } from "react";
+import CardExampleExpandable from "../components/Card"; 
+import { Paper } from "material-ui";
 
 // import Helpers
 import Helpers from "../config/Helpers";
@@ -57,6 +59,13 @@ class Search extends Component {
     }
 
     renderembassy() {
+        let title = this.props.title || 'no title provided';
+        let subTitle = this.props.subTitle || '';
+        let content = this.props.content || 'no content provided';
+        let paperStyle = {
+          padding: 10,width: "25%",
+          height: "100%"
+        };
         // if there is something in embassy array then render it
         if(this.state.embassyLink){
 
@@ -64,6 +73,7 @@ class Search extends Component {
             if(this.state.warning){
                 return(
                     <div>
+                    <Paper style={paperStyle}>
                         <a href={this.state.embassyLink}><strong>{this.state.embassyAddress[0]}</strong></a>
                         {/* iterate through address array */}
                         {this.state.embassyAddress.map(function(detail, i){  
@@ -76,6 +86,7 @@ class Search extends Component {
                         {/* assign warning info */}
                         <a href={this.state.warning.link}>{this.state.warning.warning}</a>
                         <p>{this.state.warning.date}</p>
+                    </Paper>
                     </div>
                 ) 
             // if there is an alert and
@@ -119,6 +130,7 @@ class Search extends Component {
                 <div id="xrate"></div>
                     
                     {this.renderembassy()}
+
             </div>
         )
     }

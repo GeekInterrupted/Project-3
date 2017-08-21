@@ -54,4 +54,4 @@ class EntryCard extends Component {
   }
 };
 
-export default ArticleCard;
+export default EntryCard;

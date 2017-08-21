@@ -2,7 +2,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import Logo from "../components/Logo.js";
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
+import customTheme from "../components/customTheme";
+import { RaisedButton, Paper } from "material-ui";
+import ButtonBar from "../components/navBarButtons";
+import Search from "../children/Search";
 
 class MainLayout extends Component {
     constructor(props){
@@ -11,19 +16,21 @@ class MainLayout extends Component {
     // static propTypes = {
     //     children: PropTypes.element
     // }
-    render() {
+    render(){
         return (
-            <div>
-           <Logo />
-          
-            <span>
-            Links: <Link to = "/login">Login </Link>
-            </span>
-            || <Link to = "/edit-entry"> Edit Entry</Link>
+            <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>  
+  
+            <div> 
+            <ButtonBar /> 
             <br />
-            {/*content of current route will go in the props.children below */}
+            <br />
+            <br />
+            <Search />      
+          
             {this.props.children}
             </div>
+           
+            </MuiThemeProvider>
         );
     }
 }
