@@ -4,6 +4,9 @@ import {bindActionCreators} from "redux";
 import entryActions from "../actions/entry.js";
 import falcorModel from "../falcorModel.js";
 import Logo from "../components/Logo";
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import customTheme from '../components/customTheme';
 
 //use the spread operator to spread one object state into a second one
 const mapStateToProps = (state) => ({
@@ -13,6 +16,17 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     entryActions: bindActionCreators(entryActions, dispatch)
 });
+
+
+const styles = {
+    container: {
+      width: 500,
+      textAlign: 'center',
+      paddingTop: 10,
+      float: "none",
+      margin: "auto",
+    },
+  };
 
 class TravelDiary extends Component {
     constructor(props) {
@@ -58,7 +72,8 @@ async _fetch() {
                 entryArray.push(currentEntry);
             }
             return (
-                <div>
+                <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}> 
+                <div style = {styles.container}>
                 <br />
                 <br />
                 <Logo />
@@ -67,6 +82,7 @@ async _fetch() {
                 <h1>Travel Diary Entries</h1>
                 {entryArray}
                 </div>
+                </MuiThemeProvider>
             );
     }
 }

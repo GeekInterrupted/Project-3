@@ -57,7 +57,7 @@ async login(credentials) {
         this.props.history.pushState(null, "/dashboard");
         return;
     } else {
-        alert("Bad login - you broke the internets");
+        alert("Bad login - you broke the internets!");
     }
     return
 }

@@ -5,6 +5,11 @@ import TravelDiary from "../layouts/TravelDiary";
 import LoginView from "../views/LoginView";
 import SearchView from "../views/SearchView";
 import DashboardView from "../views/DashboardView";
+import LogoutView from "../views/LogoutView";
+import AddEntryView from "../views/Entries/AddEntryView";
+import EditEntryView from "../views/Entries/EditEntryView";
+import RegisterView from "../views/RegisterView";
+
 
 
 const routes =  (
@@ -15,7 +20,17 @@ const routes =  (
 
         <Route exact path = "/login" component = { LoginView } />
 
-        <Route exact path = "/edit-entry" component = { DashboardView } />
+        <Route exact path = "/dashboard" component = { DashboardView } />
+
+        <Route exact path = "/logout" component = { LogoutView } />
+
+        <Route exact path = "/register" component = { RegisterView } />
+
+        <Route exact path = "/add_entry" component = { AddEntryView } />
+
+        <Route exact path = "/edit_entry" component = { EditEntryView } />
+
+
 
         </MainLayout>
     </BrowserRouter> 

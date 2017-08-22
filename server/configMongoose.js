@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+var Schema = mongoose.Schema;
 
 const conf = {
     hostname: process.env.MONGO_HOSTNAME || "localhost",
