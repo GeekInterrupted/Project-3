@@ -35,6 +35,10 @@ return (
     <RaisedButton  type="submit" label={"Register"} primary={true} style={style} />
     </Link>
     <br />
+    <Link to="/search">
+    <RaisedButton type="submit" label={"Search"} primary={true} style={style} />
+    <br />
+    </Link>
 
 
 

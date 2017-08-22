@@ -30,7 +30,7 @@ const routes =  (
 
         <Route exact path = "/edit_entry" component = { EditEntryView } />
 
-
+        <Route exact path = "/search" component = { SearchView } />
 
         </MainLayout>
     </BrowserRouter> 
