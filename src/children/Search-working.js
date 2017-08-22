@@ -4,18 +4,12 @@ import React, { Component } from "react";
 // import Helpers
 import Helpers from "../config/Helpers";
 
-
 // Create class component
 class Search extends Component {
-    constructor(){
-        super()
-        // initialize state
+    constructor(props){
+        super(props)
         this.state = {
-            country: "", 
-            embassyLink: "",
-            embassyAddress: [],
-            warning: {},
-            alert: {}
+            country: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -33,25 +27,28 @@ class Search extends Component {
         console.log(`This is the Search's state ${this.state.country}`);
         
         // make HTTP requests from helpers
-        Helpers.getCurrencyRate(this.state.country);
-        Helpers.getEmbassyAndWaring(this.state.country).then(function(data){
-                console.log(data);
-                // Iterate the data and check if there are alert or warning
-                for(let i = 0; i < data.length; i++){
-                    // set state with all data we get
-                    if (data[0]){
-                        this.setState({embassyLink: data[0].link, embassyAddress: data[0].embassy});                     
-                    }
-                    // if there is a warning
-                    if(data[1]){
-                        this.setState({warning: data[1]});
-                    } 
-                    // if there is an alert
-                    if(data[2]){
-                            this.setState({alert: data[2]});
-                    } 
-                }
+        Helpers.getCurrencyRate(this.state.country).then(function(data){
+            // then set its parent state
+            this.props.setCurrency(data.currency, data.xRate)
         }.bind(this));
+        // Helpers.getEmbassyAndWaring(this.state.country).then(function(data){
+        //         console.log(data);
+        //         // Iterate the data and check if there are alert or warning
+        //         for(let i = 0; i < data.length; i++){
+        //             // set state with all data we get
+        //             if (data[0]){
+        //                 this.setState({embassyLink: data[0].link, embassyAddress: data[0].embassy});                     
+        //             }
+        //             // if there is a warning
+        //             if(data[1]){
+        //                 this.setState({warning: data[1]});
+        //             } 
+        //             // if there is an alert
+        //             if(data[2]){
+        //                 this.setState({alert: data[2]});
+        //             } 
+        //         }
+        // }.bind(this));
         // reset the state (clear the input);
         this.setState({country: ""});
     }
@@ -103,23 +100,21 @@ class Search extends Component {
 
     render(){
         return(
-            <div>
-                <form>
-                    <input 
-                    type="text"
+                <form className="form-inline mr-sm-2" id="searchForm">
+                    <input className="form-control mr-sm-2" 
+                    type="text" 
                     value={this.state.country}
                     onChange={this.handleChange}
-                    placeholder="Country"
+                    placeholder="Country" 
+                    aria-label="Search"
                     />
-                    <button
-                    type="button"
+                    <button className="btn btn-outline-primary my-2 my-sm-0" 
+                    type="submit"
                     onClick={this.handleClick}
-                    >Submit</button>
+                    >
+                    Search
+                    </button>
                 </form>
-                <div id="xrate"></div>
-                    
-                    {this.renderembassy()}
-            </div>
         )
     }
 }

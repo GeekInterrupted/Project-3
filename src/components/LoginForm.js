@@ -5,6 +5,7 @@ import DefaultInput from "./DefaultInput";
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import customTheme from '../components/customTheme';
+import { Link } from "react-router-dom";
 
 const styles = {
   container: {
@@ -39,6 +40,7 @@ class LoginForm extends Component {
             style={{margin: '0 auto', display: 'block', width: 150}}
             label={'Log in'} />
           </div>
+          <span>Have not <Link to="/register">registered</Link>?</span>
         </Paper>
         </div>
         </MuiThemeProvider>

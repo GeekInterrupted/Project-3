@@ -14,7 +14,8 @@ import RegisterView from "../views/RegisterView";
 
 const routes =  (
     <BrowserRouter> 
-        <MainLayout>
+        {/* Passing location to NavBtn */}
+        <MainLayout location={location}>
         
         <Route exact path ="/" component = { TravelDiary }  />
 

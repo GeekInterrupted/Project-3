@@ -8,29 +8,49 @@ import customTheme from "../components/customTheme";
 import { RaisedButton, Paper } from "material-ui";
 import ButtonBar from "../components/navBarButtons";
 import Search from "../children/Search";
+import Result from "../components/Result";
+import Footer from "../components/Footer";
 
 class MainLayout extends Component {
     constructor(props){
         super(props)
+         // initialize state
+         this.state = {
+            embassyLink: "",
+            embassyAddress: [],
+            warning: {},
+            alert: {},
+            currency:  "",
+            rate: 0
+        }
+        // this.setState = this.setResult.bind(this);
+        this.setCurrency = this.setCurrency.bind(this);
     }
-    // static propTypes = {
-    //     children: PropTypes.element
+    // to handle result from search component
+    // setResult(){
+    //     this.setState({});
     // }
+    setCurrency(currency, rate){
+        // after get data back from its child then set to state
+        this.setState({
+            currency: currency,
+            rate: rate
+        })
+    }
     render(){
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>  
-  
             <div> 
-            <ButtonBar /> 
-            <br />
-            <br />
-            <br />
-            <Search />      
-          
+            {/*  Passing path name to ButtonBar component*/}
+            <ButtonBar location={this.props.location.pathname}
+            // give acccess to ButtonBar to set state 
+            setResult={this.setResult}
+            setCurrency={this.setCurrency}
+            /> 
+            {/* <Search />       */}
             {this.props.children}
-            </div>
-           
-            </MuiThemeProvider>
+
+            <Footer />
+           </div>  
         );
     }
 }
