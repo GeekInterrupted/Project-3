@@ -32,16 +32,16 @@ class ButtonBar extends Component {
     // setSearchResult(){
     //   this.props.setResult({});
     // }
-    setCurrency(currency, rate){
+    setCurrency(currency, rate, lat, lng, country, flag){
       // pass to its parent
-      this.props.setCurrency(currency, rate);
+      this.props.setCurrency(currency, rate, lat, lng, country, flag);
     }
 
 
     render() {
         return (
           <nav className="navbar navbar-light bg-light justify-content-between">
-            <a className="navbar-brand" href="#">Logo</a>
+            <Link to="/" className="navbar-brand" >Logo</Link>
               {/* give access to search component and pass data back */}
               <Search setSearchResult={this.setSearchResult}
               setCurrency={this.setCurrency}

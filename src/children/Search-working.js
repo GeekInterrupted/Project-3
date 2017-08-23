@@ -29,7 +29,7 @@ class Search extends Component {
         // make HTTP requests from helpers
         Helpers.getCurrencyRate(this.state.country).then(function(data){
             // then set its parent state
-            this.props.setCurrency(data.currency, data.xRate)
+            this.props.setCurrency(data.currency, data.xRate, data.lat, data.lng, data.country, data.flag)
         }.bind(this));
         // Helpers.getEmbassyAndWaring(this.state.country).then(function(data){
         //         console.log(data);

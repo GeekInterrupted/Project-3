@@ -7,15 +7,16 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import customTheme from "../components/customTheme";
 import { RaisedButton, Paper } from "material-ui";
 import ButtonBar from "../components/navBarButtons";
-import Search from "../children/Search";
-import Result from "../components/Result";
 import Footer from "../components/Footer";
+import Result from "../components/Result";
 
 class MainLayout extends Component {
     constructor(props){
         super(props)
          // initialize state
          this.state = {
+            country: "",
+            flag: "",
             embassyLink: "",
             embassyAddress: [],
             warning: {},
@@ -30,11 +31,15 @@ class MainLayout extends Component {
     // setResult(){
     //     this.setState({});
     // }
-    setCurrency(currency, rate){
+    setCurrency(currency, rate, lat, lng, country, flag){
         // after get data back from its child then set to state
         this.setState({
             currency: currency,
-            rate: rate
+            rate: rate,
+            lat: lat,
+            lng: lng,
+            country: country,
+            flag: flag
         })
     }
     render(){
@@ -46,8 +51,8 @@ class MainLayout extends Component {
             setResult={this.setResult}
             setCurrency={this.setCurrency}
             /> 
-            {/* <Search />       */}
-            {this.props.children}
+            <Result state={this.state}/>
+            {/* {this.props.children} */}
 
             <Footer />
            </div>  
