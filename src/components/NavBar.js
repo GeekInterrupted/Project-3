@@ -12,23 +12,14 @@ class NavBar extends Component {
     }
     // render Navbar depending on mainComponent
     renderNavBtn(){
-      if(this.props.state.mainComponent == "login" || this.props.state.mainComponent == "register" ){
-        // remove input
-        $("#searchForm").addClass("invisible");
-        return(      
-          <li className="nav-item active">
-            <a href="# "className="nav-link" onClick={()=>this.setMainComponent("main")}>Home <span className="sr-only">(current)</span></a>
-          </li>
-        )
-      } else {
-        // add input
-        $("#searchForm").removeClass("invisible");
-        return(
-          <li className="nav-item active">
-            <a href="#" className="nav-link" onClick={()=>this.setMainComponent("login")}>Log In <span className="sr-only">(current)</span> </a>
-          </li>
-        )
-      }
+        // If props.state toggleModal equals false then render login btn
+        if(!this.props.state.toggleModal){
+          return(
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={()=>$(".modal").modal('show')}>Login</a>
+            </li>
+          )
+        }
     }
 
     setMainComponent(component){

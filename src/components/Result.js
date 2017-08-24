@@ -124,6 +124,7 @@ class Result extends Component {
     }
 
     renderWarning(){
+        // warning must not be an empty object to render
         if(!$.isEmptyObject(this.props.state.warning)){
             console.log(this.props.state.warning);
             $(".alert").removeClass("invisible");

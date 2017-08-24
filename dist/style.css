@@ -66,3 +66,16 @@ html {
 .p-footer {
   margin-bottom: 0;
 }
+
+.fa-sign-in{
+  color: white;
+}
+
+.password-row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.modal-footer{
+  display: inline;
+}

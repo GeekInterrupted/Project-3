@@ -8,7 +8,7 @@ import Result from "../components/Result";
 
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
-
+import LoginModal from "../children/LoginModal";
 
 
 class Root extends Component {
@@ -26,7 +26,7 @@ class Root extends Component {
             warning: {},
             alert: {},
             currency:  "",
-            rate: 0
+            rate: 0,
         }
         this.renderComponent = this.renderComponent.bind(this);
         this.setMainComponent = this.setMainComponent.bind(this);
@@ -90,13 +90,15 @@ class Root extends Component {
                     setEmbassyAndWarning={this.setEmbassyAndWarning}
                     // give acccess to ButtonBar to set state
                     state={this.state}
-                    setResult={this.setResult}
+                    setToggleModal={this.setToggleModal}
                     setCountryDetails={this.setCountryDetails}
                     /> 
 
                     {/* We are going to render everything here */}
                         {this.renderComponent()}
 
+                    {/* passing toggleModal state to LoginModal Component */}
+                    <LoginModal toggleModal={this.state.toggleModal}/>
                     <Footer />
                 </div>
         )
