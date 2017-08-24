@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 // Icon
 class Logo extends Component {
  render() {

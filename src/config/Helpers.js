@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Helpers = {
 
-    getEmbassyAndWaring: countryTerm=>{
+    getEmbassyAndWarning: countryTerm=>{
         
     // making a post request to server to handle gettinh embasy info and warning
       return axios.post("/embassy", {country:countryTerm}).then(data=>{
@@ -16,31 +16,49 @@ const Helpers = {
          // assigne URL variable for making http request with axios
          let restURL = `https://restcountries.eu/rest/v2/name/${countryTerm}`;
          return axios.get(restURL).then(response=>{
-             console.log(`This is a response from rest country`);
              console.log(response.data);
  
              // Then  Grab the currency and assign to variable
              const currency = response.data[0].currencies[0].code
-             const  fixerURL = "http://api.fixer.io/latest?base=USD"
-                 // Make another http request to get x rate against the USD
-                 return axios.get(fixerURL).then(res=>{
-                     console.log(res.data.rates)
-                     // Loop throgh res.rates objects
-                     for(var xCurrency in res.data.rates){
-                         // Compare if curreny inside of that object equal curreny from the search of country
-                         if(xCurrency === currency){
-                              console.log(`This is xRate per 1 USD = ${res.data.rates[xCurrency]}`);
-                              return ({
-                                  currency: currency,
-                                  xRate: res.data.rates[xCurrency],
-                                  lat: response.data[0].latlng[0],
-                                  lng: response.data[0].latlng[1],
-                                  country: response.data[0].name,
-                                  flag: response.data[0].flag
-                              })
-                         }
-                    }
-                 })
+
+                const  fixerURL = "http://api.fixer.io/latest?base=USD"
+                    // Make another http request to get x rate against the USD
+                    return axios.get(fixerURL).then(res=>{
+                        // Loop throgh res.rates objects
+                            let length = 0;
+                        for(var xCurrency in res.data.rates){
+                            if( res.data.rates.hasOwnProperty(xCurrency) ) {
+                                ++length;
+                            
+                            //Compare if curreny inside of that object equal curreny from the search of country
+                            if(xCurrency === currency){
+                                return ({
+                                    currency: currency,
+                                    xRate: res.data.rates[xCurrency],
+                                    lat: response.data[0].latlng[0],
+                                    lng: response.data[0].latlng[1],
+                                    country: response.data[0].name,
+                                    nativeName: response.data[0].nativeName,
+                                    language: response.data[0].languages[0].name,
+                                    flag: response.data[0].flag
+                                });
+
+                            // If there is no match then return xRate with 0
+                            } else if (xCurrency !== currency && length == 31){
+                                    return ({
+                                        currency: currency,
+                                        xRate: 0,
+                                        lat: response.data[0].latlng[0],
+                                        lng: response.data[0].latlng[1],
+                                        country: response.data[0].name,
+                                        nativeName: response.data[0].nativeName,
+                                        language: response.data[0].languages[0].name,
+                                        flag: response.data[0].flag
+                                    });
+                                }
+                            }
+                        }
+                    })
          })
  
     }
