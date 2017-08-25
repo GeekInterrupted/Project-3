@@ -47,7 +47,7 @@ class LoginModal extends Component {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <p>Have not yet been register?</p>   
+                            <p>Not registered yet?</p>   
                         </div>
                     </div>
                 </div>
