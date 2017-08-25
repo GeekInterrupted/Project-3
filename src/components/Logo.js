@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Logo extends Component {
  render() {
    return (
-     <svg className="pulse" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" aria-labelledby="title">
+     <svg className="element-animation" xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 500 500" aria-labelledby="title">
        <title id="title">Heart Icon</title>
        <g id="stars">
        <path d="M518.81,254.69l1.36-1.6,1.35-1.62-.6-2-.42-1.39-.14-.46-.06-.17.62.22,1.36.5,2,.75,3.48-2.46-.15,4.36.54.42,1.13,1,1.65,1.43-4.16.91-.79,2-.81,1.95L523,254.85l-2.1-.1-1.45,0Z" transform="translate(-199.15 -12.18)" fill="#3a6088"/>
