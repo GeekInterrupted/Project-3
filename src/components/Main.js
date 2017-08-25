@@ -5,9 +5,10 @@ const styles = {
     container: {
     //   width: 500,
       textAlign: 'center',
-      paddingTop: 10,
+      paddingTop: 50,
       float: "none",
       margin: "auto",
+      height: 100
     },
   };
 

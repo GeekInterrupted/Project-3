@@ -48,7 +48,7 @@ class Search extends Component {
                     type="text" 
                     value={this.state.country}
                     onChange={this.handleChange}
-                    placeholder="Country" 
+                    placeholder="Country Name" 
                     aria-label="Search"
                     />
                     <button className="btn btn-outline-primary my-2 my-sm-0" 

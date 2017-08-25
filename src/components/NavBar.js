@@ -37,8 +37,8 @@ class NavBar extends Component {
 
     render() {
         return (
-          <nav className="navbar navbar-light bg-light justify-content-between">
-            <a href="/" className="navbar-brand" >Logo</a>
+          <nav className="navbar  justify-content-between" style={{background:"#e44042", color:"#ffffff"}} >
+            <a href="/" className="navbar-brand" ><i className="fa fa-home"></i></a>
               {/* give access to search component and pass data back */}
               <Search setSearchResult={this.setSearchResult}
               setEmbassyAndWarning={this.setEmbassyAndWarning}
