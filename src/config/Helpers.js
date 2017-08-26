@@ -61,6 +61,29 @@ const Helpers = {
                     })
          })
  
+    },
+
+    // This function posts comment to our database.
+    postComment: (country, user, comment)=>{
+        return axios.post("/post/comment", { country: country, user: user, comment: comment }).then((result)=>{ 
+            return (result.data);
+        });
+    },
+
+    // This function get comments to our database.
+    getComments: (country)=>{
+        return axios.get(`/get/comments/${country}`).then((data)=>{ 
+            return (data.data);
+        });
+
+    },
+
+    // This function posts like to back end
+    postLike: (id, user)=>{
+        return axios.post(`/post/like`, {id: id, user: user}).then((like)=>{ 
+            return (like.data);
+        });
+
     }
 
 }

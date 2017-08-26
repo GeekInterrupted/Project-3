@@ -9,6 +9,7 @@ import Result from "../components/Result";
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
 import LoginModal from "../children/LoginModal";
+import Comments from "../children/Comments";
 
 
 class Root extends Component {
@@ -16,10 +17,10 @@ class Root extends Component {
         super(props)
         // initialize state
         this.state = {
-            mainComponent: "main",
+            mainComponent: "comment",
             nativeName: "",
             language: "",
-            country: "",
+            country: "Thailand",
             flag: "",
             embassyLink: "",
             embassyAddress: [],
@@ -54,12 +55,12 @@ class Root extends Component {
                 return(<Main />)
             case "login":
                 return(<LoginForm setMainComponent={this.setMainComponent}/>)
-            case "register":
-                return(<RegisterForm />)
             case "result":
                 return(<Result state={this.state}/>)
+            case "comment":
+                return(<Comments country={this.state.country}/>)
             default:
-                return(<TravelDiary />)
+                return(<Main />)
         }
     }
     setEmbassyAndWarning(data){

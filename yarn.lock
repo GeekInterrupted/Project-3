@@ -1525,6 +1525,10 @@ domutils@1.5.1, domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+dotenv@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+
 draft-js-export-html@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/draft-js-export-html/-/draft-js-export-html-0.6.0.tgz#cc80f0544c43d0a7fedbc53c0cb0914e8090f769"

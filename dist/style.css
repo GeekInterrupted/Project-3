@@ -79,3 +79,7 @@ html {
 .modal-footer{
   display: inline;
 }
+
+.fa-thumps-up:active {
+  color: blue;
+}

@@ -1,6 +1,7 @@
 // Import react component from react
 import React, { Component } from "react";
 import worldmapConfig from "../children/worldmap"
+import Comments from "../children/Comments";
 
 
 class Result extends Component {
@@ -160,18 +161,19 @@ class Result extends Component {
 
                 {/* where the amchart diplays */}
                 <div className="container">
-                <div className="row">
-                    {/* map collumn */}
-                    <div className="col-8">
-                            <div id="chartdiv"></div>
-                    </div>
-                    {/* where the embassy and currency display */}
-                    <div className="col-4">
-                        {this.renderEmbassy()}
-                        {this.renderCurrency()}
+                    <div className="row">
+                        {/* map collumn */}
+                        <div className="col-8">
+                                <div id="chartdiv"></div>
+                        </div>
+                        {/* where the embassy and currency display */}
+                        <div className="col-4">
+                            {this.renderEmbassy()}
+                            {this.renderCurrency()}
+                        </div>
                     </div>
                 </div>
-                </div>
+                <Comments />
             </div>
         )
     }

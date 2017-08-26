@@ -1,3 +1,6 @@
+//require all credentials info
+require('dotenv').config()
+
 // Include Server Dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -35,18 +38,19 @@ app.use(express.static(__dirname + '/dist'))
 // -------------------------------------------------
 
 // MongoDB Configuration configuration
-// const promise = mongoose.connect(process.env.MONGODB_URI || process.env.DB_LOCAL, 
-//   {useMongoClient: true});
+const promise = mongoose.connect(process.env.MONGODB_URI || process.env.DB_LOCAL, 
+  {useMongoClient: true});
 
-// const db = mongoose.connection;
+const db = mongoose.connection;
 
-//   db.on("error", function(err) {
-//     console.log("Mongoose Error: ", err);
-//   });
+  db.on("error", function(err) {
+    console.log("Mongoose Error: ", err);
+  });
 
-//   db.once("open", function() {
-//     console.log("Mongoose connection successful.");
-//   });
+  db.once("open", function() {
+    console.log("Mongoose connection successful.");
+  });
+
 // -------------------------------------------------
 //using routes from routes.js
 app.use("/", routes);
