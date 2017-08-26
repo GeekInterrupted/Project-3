@@ -20,7 +20,7 @@ const Helpers = {
              // Then  Grab the currency and assign to variable
              const currency = response.data[0].currencies[0].code
 
-                const  fixerURL = "http://api.fixer.io/latest?base=USD"
+                const  fixerURL = "https://api.fixer.io/latest?base=USD"
                     // Make another http request to get x rate against the USD
                     return axios.get(fixerURL).then(res=>{
                         // Loop throgh res.rates objects
