@@ -37,7 +37,7 @@ app.use(express.static(__dirname + '/dist'))
 
 // -------------------------------------------------
 
-// MongoDB Configuration configuration
+// MongoDB Configuration
 const promise = mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/localdb', 
   {useMongoClient: true});
 
