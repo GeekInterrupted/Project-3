@@ -1,7 +1,16 @@
-# Project 3
+# N-Bajador USA
 
-Final Project UT-Houston Coding Bootcamp
+Final Project UT-Houston Coding Bootcamp.
+International Travel Companion.
 
+## Screenshot
+
+## Technologies
+
+* Mongo DB
+* Express
+* React
+* Node
 
 ## Authors
 

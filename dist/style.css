@@ -45,7 +45,7 @@ html {
   }
 
 .fa:hover {
-  color: red;
+  color: blue;
 }
 
 .main-logo {
@@ -80,6 +80,6 @@ html {
   display: inline;
 }
 
-.fa-thumps-up:active {
+.fa-thumps-down:hover {
   color: blue;
 }

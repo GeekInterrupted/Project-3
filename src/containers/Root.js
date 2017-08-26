@@ -17,10 +17,10 @@ class Root extends Component {
         super(props)
         // initialize state
         this.state = {
-            mainComponent: "comment",
+            mainComponent: "main",
             nativeName: "",
             language: "",
-            country: "Thailand",
+            country: "",
             flag: "",
             embassyLink: "",
             embassyAddress: [],
@@ -56,15 +56,14 @@ class Root extends Component {
             case "login":
                 return(<LoginForm setMainComponent={this.setMainComponent}/>)
             case "result":
-                return(<Result state={this.state}/>)
-            case "comment":
-                return(<Comments country={this.state.country}/>)
+                return(<div><Result state={this.state}/>
+                        <Comments country={this.state.country}/>
+                        </div>)
             default:
                 return(<Main />)
         }
     }
     setEmbassyAndWarning(data){
-        console.log(data);
         // if there is no warning
         if(data.length == 1){
             this.setState({

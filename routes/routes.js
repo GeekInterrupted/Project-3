@@ -25,4 +25,7 @@ app.post("/post/comment", dbController.postComment);
 // This is the route we will send POST requests to save each like.
 app.post("/post/like", dbController.postLike);
 
+// This is the route we will send POST requests to save each like.
+app.post("/post/dislike", dbController.postDislike);
+
 module.exports = app;

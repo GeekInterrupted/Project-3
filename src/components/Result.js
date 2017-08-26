@@ -127,7 +127,6 @@ class Result extends Component {
     renderWarning(){
         // warning must not be an empty object to render
         if(!$.isEmptyObject(this.props.state.warning)){
-            console.log(this.props.state.warning);
             $(".alert").removeClass("invisible");
             return(<div className="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" className="close"aria-label="Close">
@@ -173,7 +172,7 @@ class Result extends Component {
                         </div>
                     </div>
                 </div>
-                <Comments />
+                {/* <Comments country={this.props.state.country}/> */}
             </div>
         )
     }

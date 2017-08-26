@@ -32,13 +32,12 @@ class Search extends Component {
         // make HTTP requests from helpers
         Helpers.getCurrencyRate(this.state.country).then(function(data){
             // then set its parent state
-            console.log(data)
             this.props.setCountryDetails(data.currency, data.xRate, data.lat, data.lng, data.country, data.nativeName, data.language, data.flag)
+            this.props.setMainComponent("result");
         }.bind(this));
     
         // reset the state (clear the input);
         this.setState({country: ""});
-        this.props.setMainComponent("result");
     }
 
     render(){
@@ -48,7 +47,7 @@ class Search extends Component {
                     type="text" 
                     value={this.state.country}
                     onChange={this.handleChange}
-                    placeholder="Country" 
+                    placeholder="Country Name" 
                     aria-label="Search"
                     />
                     <button className="btn btn-outline-primary my-2 my-sm-0" 

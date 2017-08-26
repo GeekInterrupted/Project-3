@@ -16,7 +16,6 @@ const Helpers = {
          // assigne URL variable for making http request with axios
          let restURL = `https://restcountries.eu/rest/v2/name/${countryTerm}`;
          return axios.get(restURL).then(response=>{
-             console.log(response.data);
  
              // Then  Grab the currency and assign to variable
              const currency = response.data[0].currencies[0].code
@@ -82,6 +81,14 @@ const Helpers = {
     postLike: (id, user)=>{
         return axios.post(`/post/like`, {id: id, user: user}).then((like)=>{ 
             return (like.data);
+        });
+
+    },
+
+    // This function posts dislike to back end
+    postDislike: (id, user)=>{
+        return axios.post(`/post/dislike`, {id: id, user: user}).then((dislike)=>{ 
+            return (dislike.data);
         });
 
     }
