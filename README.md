@@ -11,6 +11,7 @@ International Travel Companion.
 * Express
 * React
 * Node
+* Heroku
 
 ## Authors
 
