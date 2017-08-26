@@ -1,4 +1,5 @@
 var path = require("path");
+const webpack = require('webpack');
 
 module.exports = {
   entry: ['babel-polyfill', './src/app.js'],
@@ -29,8 +30,19 @@ module.exports = {
       }
     }]
   },
+
+  // for minification
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+  ],
  
   
-  devtool: "eval-source-map"
+  // devtool: "eval-source-map"
+  devtool:"cheap-module-source-map"
   
 }
